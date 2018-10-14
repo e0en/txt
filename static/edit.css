@@ -1,0 +1,29 @@
+body {
+    margin: 0 auto;
+    max-width: 900px;
+    padding: 1em;
+    font-family: sans-serif;
+    font-size: 16px;
+}
+
+textarea {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 5em;
+    max-height: 50vh;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 8px;
+
+    font-size: 16px;
+}
+
+button, input[type="submit"] {
+    font-size: 16px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 8px;
+    background: #eee;
+}
