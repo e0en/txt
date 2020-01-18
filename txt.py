@@ -12,7 +12,9 @@ import mistune
 FILENAME_PREFIX = 'txt'
 conn = sqlite3.connect(f'{FILENAME_PREFIX}.db')
 
-app = Sanic()
+app = Sanic(__name__)
+app.static('/s', f'./static')
+
 
 markdown = mistune.Markdown()
 

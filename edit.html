@@ -3,52 +3,8 @@
 <head>
 <meta charset=utf-8>
 <title>txt</title>
-<style>
-body {
-    margin: 0 auto;
-    max-width: 900px;
-    padding: 1em;
-    font-family: sans-serif;
-    font-size: 16px;
-}
-
-textarea {
-    display: block;
-    box-sizing: border-box;
-    width: 100%;
-    min-height: 5em;
-    max-height: 50vh;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 8px;
-
-    font-size: 16px;
-}
-
-button, input[type="submit"] {
-    font-size: 16px;
-    text-align: center;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 8px;
-    background: #eee;
-}
-</style>
-<script>
-document.addEventListener("input", function(ev) {
-  if("textarea" === ev.target.tagName.toLowerCase()) {
-    elem = ev.target
-    elem.style.height = "inherit"
-    computed = window.getComputedStyle(elem)
-    const h = (parseInt(computed.getPropertyValue("border-top-width"), 10) +
-               parseInt(computed.getPropertyValue("padding-top"), 10) +
-               elem.scrollHeight +
-               parseInt(computed.getPropertyValue("padding-bottom"), 10) +
-               parseInt(computed.getPropertyValue("border-bottom-width"), 10))
-    elem.style.height = h + "px"
-  }
-}, false)
-</script>
+<link rel="stylesheet" type="text/css" href="s/edit.css" />
+<script src="s/edit.js" type="text/javascript"></script>
 </head>
 <body>
     <form action="/document.json" method="post">
