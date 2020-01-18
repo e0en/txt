@@ -16,6 +16,6 @@ You will also need a web server (i.e. nginx) to serve your own instance publicly
 ```bash
 $ git clone https://github.com/e0en/txt
 $ pip install -r requirements.txt
-$ python run.py
+$ python txt.py
 ```
 
