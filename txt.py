@@ -4,6 +4,7 @@ import sqlite3
 import time
 
 from jinja2 import Template
+from jinja2 import Environment, PackageLoader, select_autoescape
 from sanic import Sanic, response
 from sanic.exceptions import NotFound
 import mistune
@@ -18,12 +19,13 @@ app.static('/s', f'./static')
 
 markdown = mistune.Markdown()
 
+template_env = Environment(
+    loader=PackageLoader(__name__, '.'),
+    enable_async=True,
+)
 
-with open(f'read.html') as fp:
-    READ_TEMPLATE = Template(fp.read())
-
-with open(f'edit.html') as fp:
-    EDIT_TEMPLATE = Template(fp.read())
+read_template = template_env.get_template('read.html')
+edit_template = template_env.get_template('edit.html')
 
 
 def add_doc(doc_id, content):
@@ -88,7 +90,7 @@ async def show(request, doc_id):
 
     if r:
         content = markdown(r[0])
-        html = READ_TEMPLATE.render(content=content)
+        html = await read_template.render_async(content=content)
         return response.html(html)
     else:
         url = app.url_for('index')
@@ -97,7 +99,7 @@ async def show(request, doc_id):
 
 @app.route('/', methods=['GET'])
 async def index(request):
-    html = EDIT_TEMPLATE.render()
+    html = await edit_template.render_async(url_for=app.url_for)
     return response.html(html)
 
 
